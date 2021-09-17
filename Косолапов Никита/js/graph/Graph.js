@@ -93,6 +93,11 @@ class Graph {
         this.ctx.font = "italic 12pt Arial";
         this.ctx.fillText(name, this.xs(x), this.ys(f(x) + 1.5));
     }
+    polygonsNumber(text, x, y) {
+        this.ctx.fillStyle = "#000";
+        this.ctx.font = "italic 11pt Arial";
+        this.ctx.fillText(text, this.xs(x), this.ys(y));
+    }
     polygon(points, color) {
         this.ctx.fillStyle = `black`
 

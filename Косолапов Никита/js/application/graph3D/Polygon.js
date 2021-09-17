@@ -1,10 +1,11 @@
 class Polygon {
-    constructor(points = [], input = "#ff22aa") {
+    constructor(points = [], input = "#ff22aa", num = null) {
         this.points = points;
         this.input = input;
         this.color = this.hexToRgb(this.input);
         this.distance = 0;
         this.lumen = 1;
+        this.num = num;
     }
     hexToRgb(hex) {
         const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);

@@ -26,6 +26,9 @@ Surfaces.prototype.hyperbolicParaboloid = (x0 = 0, y0 = 0, z0 = 0, size = 5, q =
             polygones.push(new Polygon([i, i + 1, i + 1 + countPoints, i + countPoints]));
         }
     }
+    for (let i = 0; i < polygones.length; i++) {
+        polygones[i].num = i;
+    }
 
     return new Subject(points, edges, polygones);
 }

@@ -15,7 +15,7 @@ class Graph3DComponent extends Component {
         };
         this.sur = new Surfaces();
         // cube() sphere() parabolicCylinder() oneSheetHyperboloid() hyperbolicParaboloid() hyperbolicCylinder() ellipticalParaboloid() ellipticalCylinder() ellipsoid() cone() twoSheetHyperboloid()
-        this.subjects = [this.sur.hyperbolicParaboloid() ];
+        this.subjects = [this.sur.hyperbolicParaboloid()];
 
         this.canRotate = false;
         this.dx = 0;
@@ -129,6 +129,15 @@ class Graph3DComponent extends Component {
     clear() {
         this.graph2D.clear();
     }
+    findCenter(arr) {
+        let sumX = 0;
+        let sumY = 0;
+        for (let i = 0; i < arr.length; i++) {
+            sumX += arr[i].x;
+            sumY += arr[i].y
+        }
+        return [sumX / arr.length, sumY / arr.length]
+    }
 
     printSubject(subject) {
         // Рисуем все полигоны
@@ -157,7 +166,10 @@ class Graph3DComponent extends Component {
                 g = Math.round(g * lumen);
                 b = Math.round(b * lumen);
                 this.graph2D.polygon(array, polygon.rgbToHex(r, g, b));
-                this.graph2D.number(i, array[0].x, array[0].y, "y");
+                // this.graph2D.number(i, array[0].x, array[0].y, "y");
+                if (polygon.num != null) {
+                    this.graph2D.polygonsNumber(polygon.num, this.findCenter(array)[0], this.findCenter(array)[1])
+                }
                 array = [];
             }
         }
